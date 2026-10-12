@@ -195,6 +195,8 @@ body::after{
 
 
 .menu_button {
+
+    position: relative;
     border: 1px solid rgba(255,255,255,0.15);
 
     background: rgba(255,255,255,0.06);
@@ -203,12 +205,20 @@ body::after{
 
     padding: 10px 18px;
 
-    border-radius: 999px;
+    border-radius: 22px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    width: 58px;
+    height: 44px;
 
     transition: 
-        transform 0.25s ease, 
-        background 0.25s ease, 
+        width 0.35s ease, 
+        height 0.35s ease, 
         box-shadow 0.25s ease, 
+        background 0.25s ease, 
         border-color 0.25s ease;
 }
 
@@ -240,6 +250,83 @@ body::after{
 
 }
 
+.menu_button > div {
+    opacity: 0;
+
+    white-space: nowrap;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+
+    padding: 8px 10px;
+
+    border-radius: 8px;
+
+    transform: translateX(-10px);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.3s ease,
+        background 0.2s ease;
+}
+
+.menu_button::before {
+    content: "☰";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 22px;
+
+    color: var(--text-main);
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.3s ease;
+}
+
+.menu_button:hover {
+    width: 220px;
+    height: 150px;
+
+    background: rgba(7, 20, 15, 0.96);
+
+    border-color: rgba(255, 122, 24, 0.45);
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+.menu_button:hover::before {
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.5);
+}
+
+.menu_button:hover > div {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+.menu_button:hover > div:hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(230, 57, 36, 0.3),
+            rgba(255, 122, 24, 0.12)
+        );
+
+    color: var(--heat-yellow);
+
+    transform: translateX(5px);
+}
 
 /*main wrapper*/
 
